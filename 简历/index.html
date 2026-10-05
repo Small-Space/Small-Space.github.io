@@ -1,0 +1,678 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>李宇航｜IT运维工程师</title>
+<style>
+:root{
+  --primary:#255b94;
+  --secondary:#2483a7;
+  --ink:#1f2937;
+  --muted:#64748b;
+  --light-line:#e2e8f0;
+  --bg-page:#f8fafc;
+  --card-bg:#ffffff;
+  --side-bg:#f8fafc;
+  --print-ink:#111111;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--bg-page);
+  font-family:"Microsoft YaHei","PingFang SC","Noto Sans SC",Arial,sans-serif;
+  color:var(--ink);
+  line-height:1.75;
+}
+.page{
+  max-width:1180px;
+  margin:32px auto;
+  background:#fff;
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 8px 30px rgba(22,54,88,0.08);
+}
+.hero{
+  padding:42px 48px 36px;
+  color:#fff;
+  background:linear-gradient(110deg,#1e3f64,#245b8c 65%,#237b9c);
+  position:relative;
+}
+.hero::after{
+  content:"";
+  position:absolute;
+  width:300px;
+  height:300px;
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:50%;
+  right:-100px;
+  top:-180px;
+  pointer-events:none;
+}
+.hero>*{position:relative;z-index:1;}
+.kicker{
+  font-size:12px;
+  letter-spacing:2px;
+  color:#c5e4f3;
+  opacity:0.85;
+}
+.kicker::before{
+  content:"";
+  display:inline-block;
+  width:22px;
+  height:2px;
+  background:#7dd3fc;
+  margin-right:8px;
+  vertical-align:middle;
+}
+h1{
+  font-size:40px;
+  line-height:1.1;
+  margin:10px 0 6px;
+  letter-spacing:1px;
+  font-weight:700;
+}
+.role{
+  font-size:16px;
+  color:#e0f2fe;
+  opacity:0.92;
+}
+.hero-grid{
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:30px;
+  align-items:center;
+}
+/* 一寸证件照容器 宽2.5cm 高3.5cm 标准一寸比例 */
+.avatar-wrap{
+  width:150px;
+  height:196px;
+  border:2px solid rgba(255,255,255,0.35);
+  background:rgba(255,255,255,0.08);
+  display:block;
+  overflow:hidden;
+  flex-shrink:0;
+}
+.avatar-wrap img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.contacts{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  margin-top:12px;
+}
+.contact.wide{grid-column:1/-1;}
+.contact{
+  padding:8px 11px;
+  border:1px solid rgba(255,255,255,0.18);
+  background:rgba(255,255,255,0.06);
+  border-radius:8px;
+  font-size:12px;
+}
+.contact b{
+  display:block;
+  color:#a5d8f0;
+  font-size:10px;
+  font-weight:500;
+}
+.layout{
+  display:grid;
+  grid-template-columns:270px 1fr;
+}
+.side{
+  background:var(--side-bg);
+  border-right:1px solid var(--light-line);
+  padding:28px 24px;
+}
+.side-title{
+  font-size:11px;
+  letter-spacing:1.5px;
+  color:var(--primary);
+  font-weight:700;
+  margin:0 0 12px;
+  display:flex;
+  gap:7px;
+  align-items:center;
+  text-transform:uppercase;
+}
+.side-title::after{
+  content:"";
+  height:1px;
+  background:#cbd5e1;
+  flex:1;
+}
+.side-section{
+  margin-bottom:24px;
+}
+.box{
+  background:var(--card-bg);
+  border:1px solid var(--light-line);
+  border-radius:10px;
+  padding:13px;
+  color:#576476;
+  font-size:12px;
+}
+.tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:5px;
+}
+.tag{
+  background:#ffffff;
+  border:1px solid #cbd5e1;
+  color:#334155;
+  border-radius:5px;
+  padding:3px 6px;
+  font-size:10.2px;
+}
+.skill{
+  margin:11px 0;
+}
+.skill-top{
+  font-size:11px;
+  font-weight:600;
+  color:#374151;
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:4px;
+}
+.bar{
+  height:6px;
+  background:#e2e8f0;
+  border-radius:3px;
+  overflow:hidden;
+}
+.bar i{
+  display:block;
+  height:100%;
+  background:linear-gradient(90deg,var(--primary),var(--secondary));
+  border-radius:3px;
+}
+.main{
+  padding:30px 40px;
+}
+.section{
+  margin-bottom:30px;
+}
+.section-title{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:14px;
+}
+.num{
+  width:28px;
+  height:28px;
+  background:#e8f1fb;
+  color:var(--primary);
+  border-radius:7px;
+  display:grid;
+  place-items:center;
+  font-size:11px;
+  font-weight:700;
+}
+.section-title h2{
+  margin:0;
+  font-size:19px;
+  font-weight:700;
+  color:var(--ink);
+}
+.line{
+  height:1px;
+  background:var(--light-line);
+  flex:1;
+}
+.summary{
+  padding:16px 18px;
+  border:1px solid var(--light-line);
+  border-radius:11px;
+  background:#f8fafc;
+  font-size:13px;
+  color:#475569;
+}
+.timeline{
+  position:relative;
+}
+.timeline::before{
+  content:"";
+  position:absolute;
+  left:7px;
+  top:6px;
+  bottom:6px;
+  width:1px;
+  background:#cbd5e1;
+}
+.job{
+  position:relative;
+  padding-left:30px;
+  margin-bottom:22px;
+}
+.dot{
+  position:absolute;
+  left:0;
+  top:7px;
+  width:15px;
+  height:15px;
+  border:3px solid var(--primary);
+  border-radius:50%;
+  background:#fff;
+  box-shadow:0 0 0 3px #e8f1fb;
+}
+.job-head{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+}
+.job-title{
+  font-size:14.5px;
+  font-weight:700;
+  color:#1e293b;
+}
+.date{
+  font-size:11px;
+  color:var(--primary);
+  background:#e8f1fb;
+  border-radius:5px;
+  padding:2px 7px;
+  white-space:nowrap;
+  font-weight:600;
+}
+.sub{
+  font-size:11px;
+  color:#64748b;
+  margin:2px 0 5px;
+}
+ul{
+  margin:0;
+  padding-left:16px;
+}
+li{
+  font-size:12.4px;
+  color:#475569;
+  margin:3px 0;
+}
+.projects{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:13px;
+}
+.card{
+  border:1px solid var(--light-line);
+  border-radius:11px;
+  padding:15px;
+  background:#ffffff;
+}
+.card.feature{
+  grid-column:1/-1;
+  background:#f8fafc;
+}
+.card-title{
+  font-size:13.5px;
+  font-weight:700;
+  color:#1e293b;
+}
+.meta{
+  font-size:10.3px;
+  color:var(--primary);
+  font-weight:600;
+  margin:3px 0 8px;
+}
+.card p{
+  font-size:12px;
+  color:#475569;
+  margin:5px 0;
+}
+.tech{
+  display:flex;
+  gap:5px;
+  flex-wrap:wrap;
+  margin-top:8px;
+}
+.tech span{
+  font-size:10px;
+  background:#f1f5f9;
+  color:#475569;
+  padding:2px 6px;
+  border-radius:4px;
+}
+.quote{
+  border-left:3px solid var(--primary);
+  background:#f8fafc;
+  border-radius:0 9px 9px 0;
+  padding:14px 17px;
+  color:#475569;
+  font-size:12.5px;
+}
+.footer{
+  text-align:center;
+  color:#94a3b8;
+  font-size:10px;
+  padding:0 0 24px;
+}
+/* 打印页脚：屏幕隐藏，仅打印时显示 */
+.print-footer{display:none;}
+.actions{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  display:flex;
+  gap:7px;
+  z-index:99;
+}
+.actions button{
+  border:0;
+  border-radius:7px;
+  padding:8px 11px;
+  background:#234e78;
+  color:#ffffff;
+  cursor:pointer;
+  font-size:12px;
+}
+
+/* 移动端适配：小屏幕隐藏头像 */
+@media(max-width:900px){
+  .page{margin:8px;border-radius:12px;}
+  .hero{padding:32px 20px;}
+  .hero-grid{grid-template-columns:1fr;}
+  .avatar-wrap{display:none;}
+  .contacts{margin-top:18px;}
+  .layout{grid-template-columns:1fr;}
+  .side{border-right:none;border-bottom:1px solid var(--light-line);}
+  .main{padding:22px 18px;}
+  .projects{grid-template-columns:1fr;}
+  .card.feature{grid-column:auto;}
+}
+@media(max-width:600px){
+  h1{font-size:30px;}
+  .job-head{display:block;}
+  .date{display:inline-block;margin-top:4px;}
+}
+
+/* =====打印PDF核心优化===== */
+@media print{
+  *{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important;}
+  body{background:#fff; color:var(--print-ink);}
+  .page{margin:0;max-width:none;box-shadow:none;border-radius:0;overflow:visible;}
+  /* 强制桌面双列版式：A4纵向纸张宽度(约794px)<900px会触发移动端媒体查询(隐藏头像/单列)，必须在此恢复 */
+  .hero-grid{grid-template-columns:auto 1fr !important;align-items:center;}
+  .layout{grid-template-columns:270px 1fr !important;}
+  .projects{grid-template-columns:1fr 1fr !important;}
+  .card.feature{grid-column:1/-1 !important;}
+  .side{border-right:1px solid #cbd5e1 !important;border-bottom:none !important;}
+  .main{padding:30px 40px !important;}
+  .footer{padding-bottom:32px;}
+  /* 顶部区：保留与屏幕一致的深蓝渐变彩色。打印时请在打印对话框勾选"背景图形"，否则背景色不会打印 */
+  .hero{padding:30px 40px;}
+  .hero::after{display:none;}
+  /* 照片：固定像素尺寸 + block，规避打印引擎对百分比高度解析为0的bug */
+  .avatar-wrap{display:block !important;border:2px solid rgba(255,255,255,0.5);background:#ffffff;}
+  .avatar-wrap img{display:block;width:150px;height:196px;object-fit:cover;}
+  .actions{display:none !important;}
+  /* 打印页脚：每页底部居中显示（Chrome/Edge 117+ 会在每页重复；旧版浏览器可能仅第一页显示） */
+  .print-footer{
+    display:block;
+    position:fixed;
+    bottom:0;left:0;right:0;
+    text-align:center;
+    font-size:9px;
+    color:#666666;
+    line-height:1;
+    padding:6px 0;
+    border-top:1px solid #dddddd;
+    background:#ffffff;
+  }
+  /* =====黑白打印模式：点页面右下角"黑白打印"按钮触发，去掉彩色背景、白底深字，省墨且清晰===== */
+  body.print-bw .hero{background:#ffffff !important;color:#111111 !important;}
+  body.print-bw .kicker{color:#255b94 !important;opacity:1;}
+  body.print-bw .kicker::before{background:#255b94;}
+  body.print-bw .hero h1{color:#111111 !important;}
+  body.print-bw .role{color:#333333 !important;opacity:1;}
+  body.print-bw .contact{border:1px solid #bbbbbb;background:#ffffff !important;}
+  body.print-bw .contact b{color:#255b94 !important;}
+  body.print-bw .avatar-wrap{border:1px solid #999999;background:#ffffff;}
+  body.print-bw .side{background:#ffffff !important;border-right:1px solid #aaaaaa;}
+  body.print-bw .box,body.print-bw .summary,body.print-bw .card,body.print-bw .card.feature,body.print-bw .quote{background:#ffffff !important;border-color:#bbbbbb;}
+  body.print-bw .bar{background:#eeeeee;}
+  body.print-bw .bar i{background:#446b94;}
+  body.print-bw .tag{border-color:#cccccc;}
+  body.print-bw .date{background:#ffffff;border:1px solid #cccccc;color:#333333;}
+  body.print-bw .num{background:#f1f5f9;}
+}
+</style>
+</head>
+<body>
+<div class="page">
+<header class="hero">
+  <div class="hero-grid">
+    <!-- ==========一寸证件照位置（左侧，与姓名信息并排）========== -->
+    <div class="avatar-wrap">
+      <img src="zhaopian.jpg" alt="证件照">
+    </div>
+    <div>
+      <div class="kicker">PERSONAL RESUME · 2026</div>
+      <h1>李宇航</h1>
+      <div class="role">IT运维工程师　·　网络运维工程师　·　企业信息化运维工程师</div>
+      <div class="contacts">
+        <div class="contact"><b>学历</b>统招本科 / 学士学位</div>
+        <div class="contact"><b>专业</b>软件工程</div>
+        <div class="contact"><b>毕业院校</b>山西应用科技学院</div>
+        <div class="contact"><b>电话</b>18317504255</div>
+        <div class="contact wide"><b>邮箱</b>18317504255@163.com</div>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="layout">
+<aside class="side">
+  <div class="side-section">
+    <div class="side-title">CAREER FOCUS</div>
+    <div class="box">以企业IT运维为核心，结合网络技术、ERP/MES业务支持与Python自动化能力，持续向综合型IT运维工程师发展。</div>
+  </div>
+  <div class="side-section">
+    <div class="side-title">CORE SKILLS</div>
+    <div class="skill">
+      <div class="skill-top"><span>Windows / 桌面运维</span><span>熟练</span></div>
+      <div class="bar"><i style="width:90%"></i></div>
+    </div>
+    <div class="skill">
+      <div class="skill-top"><span>网络 / 路由交换</span><span>熟练</span></div>
+      <div class="bar"><i style="width: 75%"></i></div>
+    </div>
+    <div class="skill">
+      <div class="skill-top"><span>FastAPI / Web</span><span>实践</span></div>
+      <div class="bar"><i style="width:68%"></i></div>
+    </div>
+    <div class="skill">
+      <div class="skill-top"><span>ERP / MES支持</span><span>实践</span></div>
+      <div class="bar"><i style="width:50%"></i></div>
+    </div>
+    
+  </div>
+  <div class="side-section">
+    <div class="side-title">NETWORK</div>
+    <div class="tags">
+      <span class="tag">TCP/IP</span><span class="tag">VLAN</span><span class="tag">OSPF</span><span class="tag">BGP</span>
+      <span class="tag">ECMP</span><span class="tag">PIM</span><span class="tag">华为</span><span class="tag">H3C</span><span class="tag">Fortinet</span>
+    </div>
+  </div>
+  <div class="side-section">
+    <div class="side-title">IT & TOOLS</div>
+    <div class="tags">
+      <span class="tag">Windows</span><span class="tag">Wireshark</span><span class="tag">SecureCRT</span><span class="tag">PyCharm</span>
+      <span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span>
+    </div>
+  </div>
+  <div class="side-section">
+    <div class="side-title">ENTERPRISE IT</div>
+    <div class="tags">
+      <span class="tag">ERP</span><span class="tag">MES</span><span class="tag">工单</span><span class="tag">报工</span>
+      <span class="tag">入库</span><span class="tag">打印机</span>
+  </div>
+</aside>
+<main class="main">
+<section class="section">
+  <div class="section-title">
+    <div class="num">01</div>
+    <h2>个人优势</h2>
+    <div class="line"></div>
+  </div>
+  <div class="summary">
+软件工程专业背景，兼具网络测试、桌面运维、企业信息化系统支持实战经验。熟练 Windows 终端运维、办公外设管理、基础网络故障排查、终端软件权限；掌握二三层网络部署，可完成路由交换配置与网络协议测试。熟悉 ERP、MES 生产业务流程，了解工单、报工、入库等业务环节；掌握 Python 脚本开发、FastAPI 后端开发，可结合业务需求落地运维自动化、内部工具开发。
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">02</div>
+    <h2>工作经历</h2>
+    <div class="line"></div>
+  </div>
+  <div class="timeline">
+<article class="job">
+  <div class="dot"></div>
+  <div class="job-head">
+    <div class="job-title">苏州新实达精密电子科技有限公司</div>
+    <div class="date">2025.08 — 至今</div>
+  </div>
+  <div class="sub">IT运维 / 信息化支持</div>
+  <ul>
+<li>负责企业办公终端的系统部署、软件分发、日常运维与故障排错，保障全员办公终端稳定可用。</li>
+<li>负责打印机、扫描仪等办公外设运维；处理终端网络配置、网络连通性等常见网络故障。</li>
+<li>负责终端软件安装卸载、软件权限管控。</li>
+<li>承担监控、门禁等弱电设备日常巡检，完成故障识别与问题排查。</li>
+<li>负责ERP/MES系统一线业务支撑，熟悉生产工单、工序报工、成品入库全流程；接收车间仓库业务反馈，区分操作问题与系统BUG，整理复现条件对接供应商，跟进验证推动问题闭环。</li>
+<li>参与MES需求调研与业务流程优化，梳理业务痛点；基于Python、FastAPI开展运维内部工具、轻量管理系统开发实践。</li>
+  </ul>
+</article>
+
+<article class="job">
+  <div class="dot"></div>
+  <div class="job-head">
+    <div class="job-title">北京网测科技安阳分公司</div>
+    <div class="date">2024.08 — 2025.06</div>
+  </div>
+  <div class="sub">测试工程师 / 网络技术支持</div>
+  <ul>
+<li>搭建、维护二三层网络测试环境，完成交换机、路由器配置，开展网络协议功能与性能指标验证工作。</li>
+<li>执行OSPF、BGP、ECMP、PIM等协议测试场景，分析转发表容量、路由收敛时间、负载均衡、组播转发等关键指标。</li>
+<li>使用Python编写自动化脚本，实现测试流程辅助自动化、测试数据采集与结果整理，提升测试效率。</li>
+<li>提供远程及现场技术支持，排查终端、网络设备、测试环境故障；对接研发团队复现问题、跟进问题定位。</li>
+<li>参与项目实施，输出测试记录、技术文档、正式测试报告。</li>
+  </ul>
+</article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">03</div>
+    <h2>项目经历</h2>
+    <div class="line"></div>
+  </div>
+  <div class="projects">
+<article class="card feature">
+  <div class="card-title">企业看板终端管理与视频播放系统</div>
+  <div class="meta">个人实践项目 · 企业内部信息化场景</div>
+  <ul>
+<li>根据企业电视看板素材播放业务需求，设计开发轻量化管理系统，实现素材管理、播放列表配置、终端管理、账号权限管理核心模块。</li>
+<li>使用FastAPI搭建后端接口，前端浏览器实现图片、视频循环播放、终端配置、内容切换、全屏展示等功能，完成功能调试与性能优化。</li>
+<li>完成需求拆解、接口联调、部署排障，具备完整小型系统开发实践经验。</li>
+  </ul>
+  <div class="tech">
+    <span>Python</span><span>FastAPI</span><span>HTML</span><span>CSS</span><span>JavaScript</span>
+  </div>
+</article>
+
+<article class="card">
+  <div class="card-title">中国信通院网络设备性能测试项目</div>
+  <div class="meta">网络设备功能 / 性能测试</div>
+  <ul>
+<li>参与多厂商网络设备测试环境搭建，开展OSPF、BGP、ECMP、PIM协议的功能、性能对比测试。</li>
+<li>完成转发表规模、路由收敛、负载均衡、组播转发等项目测试，整理分析测试数据，协助输出测试报告。</li>
+  </ul>
+</article>
+
+<article class="card">
+  <div class="card-title">中国移动咪咕视频接口压力测试项目</div>
+  <div class="meta">接口性能 / 高并发压力测试</div>
+  <ul>
+<li>开展单接口、多接口混合压力测试，通过工具与脚本模拟高并发请求，执行夜间批量压测任务。</li>
+<li>监控接口响应时间、吞吐量、错误率指标，记录异常现象，协助问题定位分析并整理测试结果。</li>
+  </ul>
+</article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">04</div>
+    <h2>专业能力</h2>
+    <div class="line"></div>
+  </div>
+  <div class="projects">
+<div class="card">
+  <div class="card-title">系统 & 桌面运维</div>
+  <p>Windows系统部署、故障排查、远程运维，办公终端与外设维护、软件权限管控。</p>
+</div>
+<div class="card">
+  <div class="card-title">网络技术</div>
+  <p>TCP/IP、VLAN、路由交换；熟悉OSPF/BGP/ECMP/PIM；具备华为、H3C、Fortinet设备配置调试经验。</p>
+</div>
+<div class="card">
+  <div class="card-title">企业信息化</div>
+  <p>ERP/MES一线支持，熟悉生产工单、报工、入库流程；业务问题收集，协同供应商完成问题闭环。</p>
+</div>
+<div class="card">
+  <div class="card-title">开发 & 工具</div>
+  <p>Python脚本、数据处理、FastAPI接口开发；HTML/CSS/JS基础；Wireshark、SecureCRT、PyCharm。</p>
+</div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">05</div>
+    <h2>自我评价</h2>
+    <div class="line"></div>
+  </div>
+  <div class="quote">
+具备较强的故障分析与实际问题处理能力，能够面向企业办公、生产业务开展IT运维支撑。同时拥有网络测试、桌面运维、生产信息化系统支持多重项目经历，持续深耕网络运维、企业信息化、运维自动化方向，立志成长为综合型IT运维工程师。
+  </div>
+</section>
+</main>
+</div>
+<div class="footer">李宇航 · IT运维 / 网络运维 / 企业信息化</div>
+</div>
+
+<!-- 打印页脚：仅打印时显示，每页底部重复 -->
+<div class="print-footer">李宇航 · IT运维工程师 · 18317504255 · 18317504255@163.com</div>
+
+<div class="actions">
+  <button onclick="printResume(false)">彩色打印</button>
+  <button onclick="printResume(true)">黑白打印</button>
+  <button onclick="backToTop()">返回顶部</button>
+</div>
+<script>
+function printResume(blackWhite){
+  document.body.classList.toggle('print-bw', !!blackWhite);
+  window.print();
+}
+function backToTop(){
+  var scroller = document.scrollingElement || document.documentElement;
+  try{
+    window.scrollTo({top:0, left:0, behavior:'smooth'});
+    setTimeout(function(){
+      if(scroller.scrollTop > 0){ scroller.scrollTop = 0; }
+    }, 700);
+  }catch(e){
+    scroller.scrollTop = 0;
+  }
+}
+</script>
+</body>
+</html>
+
