@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>李宇航｜IT运维工程师</title>
+<title>李宇航｜IT运维工程师｜个人求职主页</title>
 <style>
 :root{
   --primary:#255b94;
@@ -442,15 +442,32 @@ li{
   body.print-bw .date{background:#ffffff;border:1px solid #cccccc;color:#333333;}
   body.print-bw .num{background:#f1f5f9;}
 }
+
+.public-avatar{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(145deg,#e7f3fb,#c8e6f2);
+  color:#1e527c;
+  font-weight:800;
+  font-size:34px;
+  letter-spacing:1px;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.28);
+}
+.public-avatar span{transform:translateY(-1px);}
+.public-note .box{
+  border-color:#c9dce8;
+  background:#f4f9fc;
+}
 </style>
 </head>
 <body>
 <div class="page">
 <header class="hero">
   <div class="hero-grid">
-    <!-- ==========一寸证件照位置（左侧，与姓名信息并排）========== -->
-    <div class="avatar-wrap">
-      <img src="zhaopian.jpg" alt="证件照">
+    <!-- 公共主页不放真实证件照，避免照片被公开索引 -->
+    <div class="avatar-wrap public-avatar" aria-label="个人头像">
+      <span>LYH</span>
     </div>
     <div>
       <div class="kicker">PERSONAL RESUME · 2026</div>
@@ -460,14 +477,18 @@ li{
         <div class="contact"><b>学历</b>统招本科 / 学士学位</div>
         <div class="contact"><b>专业</b>软件工程</div>
         <div class="contact"><b>毕业院校</b>山西应用科技学院</div>
-        <div class="contact"><b>电话</b>18317504255</div>
-        <div class="contact wide"><b>邮箱</b>18317504255@163.com</div>
+        <div class="contact"><b>求职状态</b>开放机会 / 可进一步沟通</div>
+        <div class="contact wide"><b>联系方式</b>GitHub：Small-Space · 正式投递时提供完整联系方式</div>
       </div>
     </div>
   </div>
 </header>
 <div class="layout">
 <aside class="side">
+  <div class="side-section public-note">
+    <div class="side-title">PUBLIC PROFILE</div>
+    <div class="box">这是公开求职主页版本，不展示手机号、私人邮箱和证件照；正式求职时可提供完整简历。</div>
+  </div>
   <div class="side-section">
     <div class="side-title">CAREER FOCUS</div>
     <div class="box">以企业IT运维为核心，结合网络技术、ERP/MES业务支持与Python自动化能力，持续向综合型IT运维工程师发展。</div>
@@ -645,11 +666,11 @@ li{
 </section>
 </main>
 </div>
-<div class="footer">李宇航 · IT运维 / 网络运维 / 企业信息化</div>
+<div class="footer">李宇航 · IT运维 / 网络运维 / 企业信息化 · Public Resume</div>
 </div>
 
 <!-- 打印页脚：仅打印时显示，每页底部重复 -->
-<div class="print-footer">李宇航 · IT运维工程师 · 18317504255 · 18317504255@163.com</div>
+<div class="print-footer">李宇航 · IT运维工程师 · 公开求职主页</div>
 
 <div class="actions">
   <button onclick="printResume(false)">彩色打印</button>
@@ -675,4 +696,3 @@ function backToTop(){
 </script>
 </body>
 </html>
-
